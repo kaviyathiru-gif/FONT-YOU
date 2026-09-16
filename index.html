@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwriting Style Keyboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Handwriting Style Keyboard</h1>
+            <p class="subtitle">Transform your handwriting into a custom virtual keyboard</p>
+        </header>
+        
+        <p class="app-description">
+            Upload a page of your handwriting. Our app will analyze it and create a custom keyboard 
+            with your unique writing style that you can install on your device.
+        </p>
+        
+        <div class="permission-panel">
+            <h2 class="panel-title"><i class="fas fa-keyboard"></i> Keyboard Access Permission</h2>
+            <p>To install your custom handwriting keyboard, we need permission to enable it on your device.</p>
+            <button class="permission-btn" id="permissionBtn">
+                <i class="fas fa-shield-alt"></i> Grant Keyboard Permission
+            </button>
+            <p class="permission-note">
+                This permission allows the app to install a custom keyboard on your device. 
+                You can enable/disable it anytime in your device settings. No personal data is collected or transmitted.
+            </p>
+        </div>
+        
+        <div class="main-content">
+            <div class="panel">
+                <h2 class="panel-title"><i class="fas fa-upload"></i> Upload Handwriting</h2>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <p class="upload-text">Upload a clear image of your handwriting</p>
+                    <p>Recommended: A page with all letters, numbers, and common symbols</p>
+                    <button class="upload-btn" id="uploadBtn">Choose File</button>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
+                
+                <div class="preview-area">
+                    <img id="previewImage" class="preview-image" alt="Handwriting preview">
+                    <p id="noPreviewText">Preview will appear here</p>
+                </div>
+                
+                <button class="action-btn generate-btn" id="analyzeBtn">
+                    <i class="fas fa-magic"></i> Analyze Handwriting
+                </button>
+            </div>
+            
+            <div class="panel">
+                <h2 class="panel-title"><i class="fas fa-chart-bar"></i> Analysis Results</h2>
+                <div class="analysis-results" id="analysisResults">
+                    <div class="result-item">
+                        <span class="result-label">Font Style Detected:</span>
+                        <span class="result-value" id="fontStyle">--</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Letter Consistency:</span>
+                        <span class="result-value" id="consistency">--</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Slant Angle:</span>
+                        <span class="result-value" id="slantAngle">--</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Spacing:</span>
+                        <span class="result-value" id="spacing">--</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Characters Extracted:</span>
+                        <span class="result-value" id="characters">--</span>
+                    </div>
+                </div>
+                
+                <div class="keyboard-preview">
+                    <div class="keyboard-row">
+                        <div class="key">Q</div>
+                        <div class="key">W</div>
+                        <div class="key">E</div>
+                        <div class="key">R</div>
+                        <div class="key">T</div>
+                        <div class="key">Y</div>
+                        <div class="key">U</div>
+                        <div class="key">I</div>
+                        <div class="key">O</div>
+                        <div class="key">P</div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key">A</div>
+                        <div class="key">S</div>
+                        <div class="key">D</div>
+                        <div class="key">F</div>
+                        <div class="key">G</div>
+                        <div class="key">H</div>
+                        <div class="key">J</div>
+                        <div class="key">K</div>
+                        <div class="key">L</div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key">Z</div>
+                        <div class="key">X</div>
+                        <div class="key">C</div>
+                        <div class="key">V</div>
+                        <div class="key">B</div>
+                        <div class="key">N</div>
+                        <div class="key">M</div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key space-key">SPACE</div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="action-btn download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> Download Font
+                    </button>
+                    <button class="action-btn install-btn" id="installBtn">
+                        <i class="fas fa-plug"></i> Install Keyboard
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel">
+            <h2 class="panel-title"><i class="fas fa-keyboard"></i> Test Your Handwriting Keyboard</h2>
+            <p>Try typing with your custom handwriting font:</p>
+            <textarea class="keyboard-test-area" id="keyboardTest" placeholder="Start typing here to test your custom handwriting keyboard..."></textarea>
+            <p style="margin-top: 10px; color: #666; font-size: 0.9rem;">
+                <i class="fas fa-info-circle"></i> This is a simulation. After installation, your custom keyboard will work in any app.
+            </p>
+        </div>
+        
+        <div class="note">
+            <h3><i class="fas fa-exclamation-circle"></i> How it works:</h3>
+            <ol style="margin-left: 20px; margin-top: 10px;">
+                <li>Upload a clear image of your handwriting</li>
+                <li>Our AI analyzes letter shapes, slant, and spacing</li>
+                <li>A custom font is generated from your handwriting</li>
+                <li>Grant permission to install the keyboard on your device</li>
+                <li>Enable the keyboard in your device settings</li>
+                <li>Switch to your handwriting keyboard in any app!</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
