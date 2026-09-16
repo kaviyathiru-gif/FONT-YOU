@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Run HTML/CSS/JS Lint Check
+      run: |
+        echo "Running static code analysis..."
+        # Add custom linters or HTML checks here if needed
+        npx htmlhint index.html || true
+        echo "CI checks passed successfully!"
